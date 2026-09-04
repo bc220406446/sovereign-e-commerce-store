@@ -1,0 +1,17 @@
+{
+  "name": "Sovereign Timepieces",
+  "short_name": "Sovereign",
+  "description": "Restraint is the rarest form of luxury. Automatic, quartz and smart timepieces, backed by a written warranty.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fdfbf5",
+  "theme_color": "#b08d3e",
+  "icons": [
+    {
+      "src": "/sovereign-logo.png",
+      "sizes": "1254x1254",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
