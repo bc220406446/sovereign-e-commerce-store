@@ -1,2 +1,0 @@
-create table if not exists public.newsletter_campaigns (id uuid primary key default uuid_generate_v4(), subject text not null, content text not null, content_type text not null default 'html', total integer not null default 0, sent integer not null default 0, failed integer not null default 0, created_at timestamptz not null default now());
-alter table public.newsletter_campaigns enable row level security;
