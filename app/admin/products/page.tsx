@@ -72,7 +72,7 @@ export default function AdminProducts() {
   const [saving, setSaving] = useState(false);
 
   const uploadMedia = async (file: File, target: "hero" | "gallery") => {
-    if (target === "gallery" && editing?.form.gallery_media.length >= 5) {
+    if (target === "gallery" && (editing?.form.gallery_media?.length ?? 0) >= 5) {
       toast.error("Product gallery supports up to 5 media files.");
       return;
     }

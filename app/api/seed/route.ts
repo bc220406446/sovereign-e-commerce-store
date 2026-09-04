@@ -371,7 +371,7 @@ export async function POST() {
 
     // 3. Insert coupons
     for (const c of COUPONS) {
-      await service.from("coupons").upsert(c, { onConflict: "code" });
+      await service.from("coupons").upsert(c as any, { onConflict: "code" });
     }
 
     return NextResponse.json({ success: true, message: "Database seeded successfully" });

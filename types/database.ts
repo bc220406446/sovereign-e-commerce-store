@@ -176,6 +176,7 @@ export interface Coupon {
   id: string;
   code: string;
   type: CouponType;
+  coupon_type?: string;
   value: number;
   min_order: number | null;
   max_discount: number | null;
