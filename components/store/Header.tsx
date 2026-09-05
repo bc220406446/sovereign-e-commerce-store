@@ -63,7 +63,7 @@ function Logo() {
         alt={`${STORE_NAME} logo`}
         className="size-11 object-contain"
       />
-      <span className="font-display text-sm font-semibold tracking-wide text-slate-800">Sovereign</span>
+      <span className="font-display text-2xl font-semibold tracking-wide text-slate-800">Sovereign</span>
     </Link>
   );
 }
