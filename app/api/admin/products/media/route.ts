@@ -18,12 +18,26 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: target === "categories" ? "Only image files are supported for categories" : "Only image and video files are supported" }, { status: 400 });
     }
 
-    const extension = file.name.split(".").pop()?.toLowerCase() || "bin";
+    let uploadBuffer = Buffer.from(await file.arrayBuffer());
+    let contentType = file.type;
+    let extension = file.name.split(".").pop()?.toLowerCase() || "bin";
+
+    if (file.type.startsWith("image/")) {
+      try {
+        const sharp = (await import("sharp")).default;
+        uploadBuffer = await sharp(uploadBuffer).webp({ quality: 82 }).toBuffer();
+        contentType = "image/webp";
+        extension = "webp";
+      } catch (sharpErr) {
+        console.warn("Sharp webp conversion fallback:", sharpErr);
+      }
+    }
+
     const path = `${target}/${crypto.randomUUID()}.${extension}`;
     const service = createServiceClient();
     const { error } = await service.storage
       .from("product-media")
-      .upload(path, await file.arrayBuffer(), { contentType: file.type, upsert: false });
+      .upload(path, uploadBuffer, { contentType, upsert: false });
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
     const { data } = service.storage.from("product-media").getPublicUrl(path);

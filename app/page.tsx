@@ -89,12 +89,6 @@ export default function Home() {
           <div className="glass overflow-hidden rounded-[2rem] p-6 sm:p-10 lg:p-14">
             <div className="grid items-center gap-10 lg:grid-cols-2">
               <div className="space-y-6">
-                <div className="flex items-center gap-2">
-                  <Badge className="gap-1.5 border-transparent bg-primary/10 px-3 py-1 text-primary">
-                    <Sparkles className="size-3.5" />
-                    The Sovereign Collection
-                  </Badge>
-                </div>
                 <h1 className="font-display text-4xl font-semibold leading-[1.08] tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
                   Restraint is the rarest{" "}
                   <span className="text-gradient">form of luxury</span>
@@ -138,7 +132,7 @@ export default function Home() {
 
               <div className="relative mx-auto w-full max-w-md">
                 <div className="absolute -inset-6 rounded-full bg-gradient-to-tr from-amber-200/60 via-orange-100/50 to-yellow-200/60 blur-2xl" />
-                <ProductImage key={heroIndex} src={heroSlides[heroIndex]?.image} fallbackSrc="/hero-fallback.png" alt={heroSlides[heroIndex]?.name || "Sovereign category"} className="hero-fade relative aspect-square rounded-[2rem] shadow-xl ring-1 ring-white/80" />
+                <ProductImage key={heroIndex} src={heroSlides[heroIndex]?.image} fallbackSrc="/hero-fallback.webp" alt={heroSlides[heroIndex]?.name || "Sovereign category"} className="hero-fade relative aspect-square rounded-[2rem] shadow-xl ring-1 ring-white/80" />
                 {/* floating chips */}
                 {heroProduct && (
                   <>
