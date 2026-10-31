@@ -151,9 +151,9 @@ export function Footer() {
 
             {/* Shop */}
             <div>
-              <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-slate-700">
+              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-slate-700">
                 Shop
-              </h4>
+              </h3>
 
               <ul className="space-y-2.5 text-sm text-slate-500">
                 <li>
@@ -180,9 +180,9 @@ export function Footer() {
 
             {/* Customer Care */}
             <div>
-              <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-slate-700">
+              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-slate-700">
                 Customer Care
-              </h4>
+              </h3>
 
               <ul className="space-y-2.5 text-sm text-slate-500">
                 {[
@@ -208,9 +208,9 @@ export function Footer() {
 
             {/* Newsletter */}
             <div className="space-y-4">
-              <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-700">
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-700">
                 The Sovereign Circle
-              </h4>
+              </h3>
 
               <p className="text-sm text-slate-500">
                 Receive private invitations to limited editions and considered
