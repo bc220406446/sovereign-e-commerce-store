@@ -10,22 +10,38 @@ export function ProductImage({
   className,
   imgClassName,
   fallbackSrc,
+  priority = false,
+  width,
+  height,
 }: {
   src?: string;
   alt: string;
   className?: string;
   imgClassName?: string;
   fallbackSrc?: string;
+  priority?: boolean;
+  width?: number;
+  height?: number;
 }) {
   const [failed, setFailed] = useState(false);
   const [loaded, setLoaded] = useState(false);
+
   if ((!src || failed) && fallbackSrc) {
     return (
       <div className={cn("overflow-hidden", className)}>
-        <img src={fallbackSrc} alt={alt} className={cn("h-full w-full object-cover", imgClassName)} />
+        <img
+          src={fallbackSrc}
+          alt={alt}
+          width={width}
+          height={height}
+          loading={priority ? "eager" : "lazy"}
+          decoding="async"
+          className={cn("h-full w-full object-cover", imgClassName)}
+        />
       </div>
     );
   }
+
   if (!src || failed) {
     return (
       <div
@@ -39,16 +55,35 @@ export function ProductImage({
       </div>
     );
   }
+
   return (
     <div className={cn("relative overflow-hidden", className)}>
-      {fallbackSrc && !loaded && <img src={fallbackSrc} alt="" aria-hidden="true" className={cn("absolute inset-0 h-full w-full object-cover", imgClassName)} />}
+      {fallbackSrc && !loaded && (
+        <img
+          src={fallbackSrc}
+          alt=""
+          aria-hidden="true"
+          width={width}
+          height={height}
+          loading="eager"
+          className={cn("absolute inset-0 h-full w-full object-cover", imgClassName)}
+        />
+      )}
       <img
         src={src}
         alt={alt}
-        loading="lazy"
+        width={width}
+        height={height}
+        loading={priority ? "eager" : "lazy"}
+        fetchPriority={priority ? "high" : "auto"}
+        decoding="async"
         onLoad={() => setLoaded(true)}
         onError={() => setFailed(true)}
-        className={cn("relative h-full w-full object-cover transition-opacity duration-500", imgClassName, !loaded && fallbackSrc ? "opacity-0" : "opacity-100")}
+        className={cn(
+          "relative h-full w-full object-cover transition-opacity duration-300",
+          imgClassName,
+          !loaded && fallbackSrc ? "opacity-0" : "opacity-100"
+        )}
       />
     </div>
   );

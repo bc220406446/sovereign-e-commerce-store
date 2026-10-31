@@ -37,3 +37,27 @@ coverage/
 .DS_Store
 Thumbs.db
 .agents/
+
+# --- Antigravity SEO: Generated Files ---
+.venv/
+.antigravity_seo_drift.json
+reports/
+seo-audit-*.md
+seo-audit-*.json
+*.seo-report.md
+*.seo-report.json
+__pycache__/
+*.py[cod]
+.pytest_cache/
+screenshots/
+.agent/
+agents/
+scripts/
+seo_toolkit/
+templates/
+requirements.txt
+pyproject.toml
+AGENTS.md
+GEMINI.md
+
+
