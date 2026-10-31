@@ -22,6 +22,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fuyxnvamphrzywmuchfz.supabase.co" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://fuyxnvamphrzywmuchfz.supabase.co" />
+      </head>
       <body className="font-sans antialiased">
         <SupabaseProvider>
           <CartProvider>

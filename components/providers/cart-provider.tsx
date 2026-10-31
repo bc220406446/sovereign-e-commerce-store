@@ -65,14 +65,17 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    setLines(readStored());
+    const stored = readStored();
+    setLines(stored);
     setStorageReady(true);
-    fetch("/api/products")
-      .then((res) => res.json())
-      .then((data) => {
-        if (Array.isArray(data)) setProducts(data);
-      })
-      .catch(() => {});
+    if (stored.length > 0) {
+      fetch("/api/products")
+        .then((res) => res.json())
+        .then((data) => {
+          if (Array.isArray(data)) setProducts(data);
+        })
+        .catch(() => {});
+    }
   }, []);
 
   useEffect(() => {

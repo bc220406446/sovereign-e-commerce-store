@@ -63,7 +63,14 @@ function ProvidedSocialIcon({ label }: { label: string }) {
 }
 
 export function Footer() {
-  const [categories, setCategories] = useState<Category[]>([]);
+  const [categories, setCategories] = useState<Category[]>([
+    { id: "cat-1", name: "Men's Collection", slug: "men", description: null, image: null, sort_order: 1, created_at: "" },
+    { id: "cat-2", name: "Women's Collection", slug: "women", description: null, image: null, sort_order: 2, created_at: "" },
+    { id: "cat-3", name: "Automatic", slug: "automatic", description: null, image: null, sort_order: 3, created_at: "" },
+    { id: "cat-4", name: "Chronograph", slug: "chronograph", description: null, image: null, sort_order: 4, created_at: "" },
+    { id: "cat-5", name: "Smart Watches", slug: "smart", description: null, image: null, sort_order: 5, created_at: "" },
+    { id: "cat-6", name: "Luxury Collection", slug: "luxury", description: null, image: null, sort_order: 6, created_at: "" },
+  ]);
   const [email, setEmail] = useState("");
 
   useEffect(() => {
@@ -112,7 +119,7 @@ export function Footer() {
               <div className="flex items-center gap-2.5">
                 <span className="glass-chip flex size-10 items-center justify-center rounded-xl text-primary">
                   <img
-                    src="/sovereign-logo.png"
+                    src="/sovereign-logo.webp" width={32} height={32}
                     alt="Sovereign Watches"
                     className="size-8 object-contain"
                   />

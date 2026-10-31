@@ -59,8 +59,10 @@ function Logo() {
   return (
     <Link href="/" className="flex items-center gap-2">
       <img
-        src="/sovereign-logo.png"
+        src="/sovereign-logo.webp"
         alt={`${STORE_NAME} logo`}
+        width={44}
+        height={44}
         className="size-11 object-contain"
       />
       <span className="font-display text-2xl font-semibold tracking-wide text-slate-800">Sovereign</span>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { cache } from "react";
 import { ArrowRight, BadgeCheck, Gem, Headphones, ShieldCheck, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/store/ProductCard";
@@ -45,30 +46,30 @@ export const metadata: Metadata = {
   },
 };
 
-async function getHomeData() {
+const getHomeData = cache(async () => {
   try {
     const supabase = createServiceClient();
     const [productsRes, categoriesRes] = await Promise.all([
       supabase
         .from("products")
-        .select("*, category:categories(*)")
+        .select("id, name, slug, price, sale_price, images, collections, status, created_at")
         .eq("status", "active")
         .order("created_at", { ascending: false }),
       supabase
         .from("categories")
-        .select("*")
+        .select("id, name, slug, image, sort_order")
         .order("sort_order", { ascending: true }),
     ]);
 
-    const products: Product[] = productsRes.data || [];
-    const categories: Category[] = categoriesRes.data || [];
+    const products: Product[] = (productsRes.data as unknown as Product[]) || [];
+    const categories: Category[] = (categoriesRes.data as unknown as Category[]) || [];
 
     return { products, categories };
   } catch (error) {
     console.error("Failed to load SSR home data:", error);
     return { products: [], categories: [] };
   }
-}
+});
 
 export default async function Home() {
   const { products, categories } = await getHomeData();
@@ -234,7 +235,6 @@ export default async function Home() {
                 <ProductImage
                   src={c.image || undefined}
                   alt={c.name}
-                  priority
                   className="aspect-[3/4] transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/10 to-transparent" />

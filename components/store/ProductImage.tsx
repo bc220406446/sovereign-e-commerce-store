@@ -58,17 +58,6 @@ export function ProductImage({
 
   return (
     <div className={cn("relative overflow-hidden", className)}>
-      {fallbackSrc && !loaded && (
-        <img
-          src={fallbackSrc}
-          alt=""
-          aria-hidden="true"
-          width={width}
-          height={height}
-          loading="eager"
-          className={cn("absolute inset-0 h-full w-full object-cover", imgClassName)}
-        />
-      )}
       <img
         src={src}
         alt={alt}
@@ -79,11 +68,7 @@ export function ProductImage({
         decoding="async"
         onLoad={() => setLoaded(true)}
         onError={() => setFailed(true)}
-        className={cn(
-          "relative h-full w-full object-cover transition-opacity duration-300",
-          imgClassName,
-          !loaded && fallbackSrc ? "opacity-0" : "opacity-100"
-        )}
+        className={cn("relative h-full w-full object-cover", imgClassName)}
       />
     </div>
   );

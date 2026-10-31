@@ -24,13 +24,14 @@ export function CartDrawer() {
   const [delivery, setDelivery] = useState<{ defaultCharge: number; freeThreshold: number } | null>(null);
 
   useEffect(() => {
+    if (!isOpen) return;
     fetch("/api/settings")
       .then((res) => res.json())
       .then((data) => {
         if (data?.delivery) setDelivery(data.delivery);
       })
       .catch(() => {});
-  }, []);
+  }, [isOpen]);
 
   const deliveryCharge =
     subtotal === 0 || (delivery && subtotal >= delivery.freeThreshold)
