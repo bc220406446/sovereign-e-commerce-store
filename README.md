@@ -281,13 +281,4 @@ On Vercel (or another host):
 2. Add the production URL and `/api/auth/callback` to Supabase Authentication URL Configuration.
 3. Point the PayFast notify URL at `/api/payments/payfast/itn`.
 
-### Before going live
-
-- [ ] Remove or protect `/api/seed`
-- [ ] Enable Row Level Security on every Supabase table and review the policies (server routes use the service role key, which bypasses RLS)
-- [ ] Never expose `SUPABASE_SERVICE_ROLE_KEY` to the browser
-- [ ] Switch PayFast out of sandbox mode
-- [ ] Send a test order through checkout, fulfilment and a return
-
-
 
